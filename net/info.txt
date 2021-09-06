@@ -1,0 +1,3 @@
+name = net
+author = The Sink God
+description = Experiment to allow http GET requests from in-game

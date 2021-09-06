@@ -1,0 +1,14 @@
+<scene id_="1674022656" open_="true" version="0.7.4" shadowVolume="200 100 200">
+	<environment id_="1085080192" template="sunny" skyboxrot="-45"/>
+	<voxbox id_="1023341568" pos="-100.0 -0.1 -100.0" size="2000 1 2000"/>
+	<vox id_="694920640" pos="0.0 0.0 0.0" file="LEVEL/basic.vox"/>
+	<boundary id_="816235136">
+		<vertex pos="-100.0 -100.0"/>
+		<vertex pos="100.0 -100.0"/>
+		<vertex pos="100.0 100.0"/>
+		<vertex pos="-100.0 100.0"/>
+	</boundary>
+	<script id_="593399168" file="main.lua"/>
+	<layers/>
+</scene>
+
