@@ -8,7 +8,7 @@ from watchdog.events import FileSystemEventHandler
 
 ##### Configure these! #####
 
-# The file path to your savegame.xml:
+# The file path to your Teardown config folder (the one that contains savegame.xml):
 path = ""
 
 # The path to your game's Teardown/data/requests folder (make the requests folder if it does not exist):
@@ -24,7 +24,7 @@ class EventHandler(FileSystemEventHandler):
 
         if event.event_type == 'modified' and 'savegame.xml' in event.src_path:
             # Parse savegame to retrieve request UUID and URL
-            data = open(path, 'r').read()
+            data = open(path + "/savegame.xml", 'r').read()
             result = data[:data.index('<tool>')] + data[data.index('</reward>') + 9:]
 
             xml_data = ET.fromstring(result)
@@ -52,7 +52,7 @@ class EventHandler(FileSystemEventHandler):
 
 event_handler = EventHandler()
 observer = Observer()
-observer.schedule(event_handler, path="C:/Users/lucia/AppData/Local/Teardown", recursive=False)
+observer.schedule(event_handler, path=path, recursive=False)
 observer.start()
 
 try:
