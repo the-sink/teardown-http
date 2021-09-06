@@ -1,6 +1,8 @@
 # teardown-http
 A rough experiment to allow for HTTP GET requests to be made from a Teardown mod in-game. It uses a python server to monitor changes to your `savegame.xml` (but does not write to it) to look for the local content mod's `request_uuid` and `request_url` keys, and sends the request. The response is written to a lua file, with the name being the uuid that was sent along with the initial request, and the mod reads this lua file with `dofile()`.
 
+![](https://i.imgur.com/INtX0dw.png)
+
 There are a few technical challenges that made me do it in this specific way:
 - `dofile()` will not read from the file each call, it caches it when it's first read. This means I can't simply create one `request.lua` file and update it each time, so I went with the uuid name method.
 - Updating the `savegame.xml` with new data was unfavorable for many reasons: it's not safe, Teardown won't even detect the change because it wasn't made with one of it's Set() functions, and it would be a mess to properly parse json out of an xml key due to the formatting restrictions (of which lua's multiline strings do not have)
